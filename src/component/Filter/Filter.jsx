@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Filter.module.css";
 
-const Filter = ({filteration}) => {
+const Filter = ({ filteration }) => {
   const [filtername, setFiltername] = useState("");
   const filterHandler = (e) => {
     const name = e.target.value;

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import CardList from "../CardList/CardList";
+import CardList from "../component/CardList/CardList";
 import Filter from "../component/Filter/Filter";
 import "./App.css";
 
