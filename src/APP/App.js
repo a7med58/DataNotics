@@ -1,10 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CardList from "../component/CardList/CardList";
 import Filter from "../component/Filter/Filter";
 import "./App.css";
 
 const App = () => {
-  const inputEl = useRef(null);
   const [cardTogel, setcardTogel] = useState(true);
   const [filter, setFilter] = useState("");
   const [boys, setBoys] = useState([
