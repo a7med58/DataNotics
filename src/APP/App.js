@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import AddUser from "../component/AddUser/AddUser";
 import CardList from "../component/CardList/CardList";
-import Filter from "../component/Filter/Filter";
+import FilterInput from "../component/FilterInput/FilterInput";
 import Button from "../component/Layout/Button";
 import Modal from "../component/Modal/Modal";
 import "./App.css";
@@ -11,7 +12,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [boys, setBoys] = useState([
     {
-      id: 1,
+      id: 1111,
       name: "Mohamed Ragab",
       department: "Animal Production",
       phone: "01123919198",
@@ -20,7 +21,7 @@ const App = () => {
       gender: "Male",
     },
     {
-      id: 2,
+      id: 2111,
       name: "Ezz Ragab",
       department: "Animal Production",
       phone: "01123919198",
@@ -30,7 +31,7 @@ const App = () => {
     },
 
     {
-      id: 3,
+      id: 3111,
       name: "Ahmed Ragab",
       department: "Animal Production",
       phone: "01123919198",
@@ -39,7 +40,7 @@ const App = () => {
       gender: "Male",
     },
     {
-      id: 4,
+      id: 4111,
       name: "Sara Ragab",
       department: "Animal Production",
       phone: "01123919198",
@@ -49,7 +50,7 @@ const App = () => {
     },
 
     {
-      id: 5,
+      id: 5111,
       name: "Eman Ahmed",
       department: "Animal Production",
       phone: "01123919198",
@@ -58,6 +59,9 @@ const App = () => {
       gender: "Female",
     },
   ]);
+  const addstaffHandller = (data) => {
+    setBoys((prevState) => setBoys([...prevState, data]));
+  };
 
   const deleteHandler = (e, selectedID) => {
     //const deleteOperation = boys.filter((el, idx) => idx !== clickedIdx);
@@ -78,29 +82,36 @@ const App = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <Modal show={showModal} closeModal={() => setShowModal(false)} />
-      <h1>Faculty Staff </h1>
-      <div style={{ display: "Flex", marginBottom: "10px" }}>
-        <Button
-          onClick={() => setcardTogel(!cardTogel)}
-          style={{ marginRight: "20px" }}
-        >
-          {cardTogel ? "Hide Names" : "Show Names"}
-        </Button>
+    <Fragment>
+      <div className="mainContainer">
+        <h1>Faculty Staff </h1>
+        <div style={{ display: "Flex", marginBottom: "10px" }}>
+          <Button
+            onClick={() => setcardTogel(!cardTogel)}
+            style={{ marginRight: "20px" }}
+          >
+            {cardTogel ? "Hide Names" : "Show Names"}
+          </Button>
 
-        <Button onClick={() => setShowModal(true)}>New Record</Button>
+          <Button onClick={() => setShowModal(true)}>New Record</Button>
+        </div>
+
+        <div className={cardTogel ? "show" : "hide"}>
+          <FilterInput filteration={filterNames} />
+          <CardList
+            staffList={namesHandler()}
+            type="men"
+            deleteFun={deleteHandler}
+          />
+        </div>
       </div>
-
-      <div className={cardTogel ? "show" : "hide"}>
-        <Filter filteration={filterNames} />
-        <CardList
-          staffList={namesHandler()}
-          type="men"
-          deleteFun={deleteHandler}
+      <Modal show={showModal} closeModal={() => setShowModal(false)}>
+        <AddUser
+          addstaffHandller={addstaffHandller}
+          closeModal={() => setShowModal(false)}
         />
-      </div>
-    </div>
+      </Modal>
+    </Fragment>
   );
 };
 
