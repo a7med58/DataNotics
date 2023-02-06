@@ -12,8 +12,6 @@ const AddUser = ({ addstaffHandller, closeModal }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-
-    
     addstaffHandller({
       id: Math.round(Math.random() * 100),
       name,
@@ -23,12 +21,12 @@ const AddUser = ({ addstaffHandller, closeModal }) => {
       officialemail,
       gender,
     });
-    setName('');
-    setDepartment('');
-    setPhone('');
-    setEmail('');
-    setOfficialemail('');
-    setGender('');
+    setName("");
+    setDepartment("");
+    setPhone("");
+    setEmail("");
+    setOfficialemail("");
+    setGender("");
     closeModal();
   };
 

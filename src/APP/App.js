@@ -83,34 +83,33 @@ const App = () => {
 
   return (
     <Fragment>
-      <div className="mainContainer">
-        <h1>Faculty Staff </h1>
-        <div style={{ display: "Flex", marginBottom: "10px" }}>
-          <Button
-            onClick={() => setcardTogel(!cardTogel)}
-            style={{ marginRight: "20px" }}
-          >
-            {cardTogel ? "Hide Names" : "Show Names"}
-          </Button>
+      <div className="body">
+      
+        <div className="mainContainer">
+          <h1>Faculty Staff </h1>
+          <div style={{ display: "Flex", marginBottom: "10px" }}>
+            <Button
+              onClick={() => setcardTogel(!cardTogel)}
+              style={{ marginRight: "20px" }}
+            >
+              {cardTogel ? "Hide Names" : "Show Names"}
+            </Button>
 
-          <Button onClick={() => setShowModal(true)}>New Record</Button>
+            <Button onClick={() => setShowModal(true)}>New Record</Button>
+          </div>
+
+          <div className={cardTogel ? "show" : "hide"}>
+            <FilterInput filteration={filterNames} />
+            <CardList staffList={namesHandler()} deleteFun={deleteHandler} />
+          </div>
         </div>
-
-        <div className={cardTogel ? "show" : "hide"}>
-          <FilterInput filteration={filterNames} />
-          <CardList
-            staffList={namesHandler()}
-            type="men"
-            deleteFun={deleteHandler}
+        <Modal show={showModal} closeModal={() => setShowModal(false)}>
+          <AddUser
+            addstaffHandller={addstaffHandller}
+            closeModal={() => setShowModal(false)}
           />
-        </div>
+        </Modal>
       </div>
-      <Modal show={showModal} closeModal={() => setShowModal(false)}>
-        <AddUser
-          addstaffHandller={addstaffHandller}
-          closeModal={() => setShowModal(false)}
-        />
-      </Modal>
     </Fragment>
   );
 };

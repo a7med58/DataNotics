@@ -1,4 +1,3 @@
-
 .control {
   width: 100%;
   display: flex;
@@ -10,7 +9,6 @@
 .control label {
   font-weight: bold;
   color: #4caf50;
-
 }
 
 .control input {

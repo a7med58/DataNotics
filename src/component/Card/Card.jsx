@@ -21,7 +21,10 @@ const Card = ({
       <div>Staff Email : {email}</div>
       <div>Staff Official Email :{officialemail}</div>
       <div>Staff Gender :{gender}</div>
-      <div className={styles.deleteBtn} onClick={(e) => deleteFun(e, id)}>
+      <div
+        className={styles.deleteBtn}
+        onClick={(event) => deleteFun(event, id)}
+      >
         x
       </div>
     </div>
